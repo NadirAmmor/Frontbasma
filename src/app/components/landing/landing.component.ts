@@ -32,7 +32,7 @@ import { Router } from '@angular/router';
         top:15%;
       }
 
-      #hero > div > p { 
+      #hero > div > p {
         max-width: 450px;
       }
     }
@@ -60,8 +60,8 @@ import { Router } from '@angular/router';
   `]
 })
 export class LandingComponent implements OnInit, OnDestroy {
-  
-  config: AppConfig;  
+
+  config: AppConfig;
 
   subscription: Subscription;
 
