@@ -6,6 +6,20 @@ body, html {
     box-sizing: border-box;
 }
 
+.bg-image {
+    /* The image used */
+
+    /* Add the blur effect */
+
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 /* Position text in the middle of the page/image */
 .bg-text {
