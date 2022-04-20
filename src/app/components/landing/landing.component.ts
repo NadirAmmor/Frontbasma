@@ -18,7 +18,6 @@ export class LandingComponent implements OnInit, OnDestroy {
   constructor(public configService: ConfigService,public app: AppComponent, public router: Router) { }
 
   ngOnInit(): void {
-      this.app.menuMode = 'overlay';
     this.config = this.configService.config;
     this.subscription = this.configService.configUpdate$.subscribe(config => {
       this.config = config;
