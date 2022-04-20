@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './landing.component.html',
   styles: [`
     #hero{
-      background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), radial-gradient(77.36% 256.97% at 77.36% 57.52%, #EEEFAF 0%, #C3E3FA 100%);
+        background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), radial-gradient(77.36% 256.97% at 77.36% 57.52%, #EEEFAF 0%, #C3E3FA 100%);
       height:700px;
       overflow:hidden;
     }
@@ -32,7 +32,7 @@ import { Router } from '@angular/router';
         top:15%;
       }
 
-      #hero > div > p { 
+      #hero > div > p {
         max-width: 450px;
       }
     }
@@ -60,8 +60,8 @@ import { Router } from '@angular/router';
   `]
 })
 export class LandingComponent implements OnInit, OnDestroy {
-  
-  config: AppConfig;  
+
+  config: AppConfig;
 
   subscription: Subscription;
 
