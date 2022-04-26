@@ -52,7 +52,7 @@ export class AppMainComponent implements AfterViewInit, OnDestroy, OnInit {
     config: AppConfig;
 
     subscription: Subscription;
-    
+
     constructor(public renderer: Renderer2, public app: AppComponent, public configService: ConfigService) { }
 
     ngOnInit() {
@@ -96,15 +96,10 @@ export class AppMainComponent implements AfterViewInit, OnDestroy, OnInit {
 
         if (this.isDesktop()) {
             if (this.app.menuMode === 'overlay') {
-                if(this.menuActiveMobile === true) {
-                    this.overlayMenuActive = true;
-                }
-
-                this.overlayMenuActive = !this.overlayMenuActive;
-                this.menuActiveMobile = false;
+                this.app.menuMode = 'static';
             }
             else if (this.app.menuMode === 'static') {
-                this.staticMenuInactive = !this.staticMenuInactive;
+                this.app.menuMode = 'overlay';
             }
         }
         else {
@@ -112,7 +107,6 @@ export class AppMainComponent implements AfterViewInit, OnDestroy, OnInit {
             this.topMenuActive = false;
         }
 
-        event.preventDefault();
     }
 
     toggleProfile(event: Event) {

@@ -3,6 +3,7 @@ import { ConfigService } from '../../service/app.config.service';
 import { AppConfig } from '../../api/appconfig';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import {AppComponent} from "../../app.component";
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
@@ -14,7 +15,7 @@ export class LandingComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
 
-  constructor(public configService: ConfigService, public router: Router) { }
+  constructor(public configService: ConfigService,public app: AppComponent, public router: Router) { }
 
   ngOnInit(): void {
     this.config = this.configService.config;
