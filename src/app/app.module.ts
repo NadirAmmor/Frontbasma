@@ -88,7 +88,7 @@ import { TreeSelectModule } from 'primeng/treeselect';
 import { TreeTableModule } from 'primeng/treetable';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { BlockViewer } from './components/blockviewer/blockviewer.component';
- 
+
 import { AppCodeModule } from './components/app-code/app.code.component';
 import { AppComponent } from './app.component';
 import { AppMainComponent } from './app.main.component';
@@ -141,6 +141,9 @@ import { ErrorComponent } from './components/error/error.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ListOffreComponent } from './components/list-offre/list-offre.component';
+import { AjoutCampagneComponent } from './components/ajout-campagne/ajout-campagne.component';
+import {ConfirmationService, MessageService} from "primeng/api";
 
 @NgModule({
     imports: [
@@ -275,11 +278,13 @@ import { RegisterComponent } from './components/register/register.component';
         NotfoundComponent,
         AccessComponent,
         RegisterComponent,
+        ListOffreComponent,
+        AjoutCampagneComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, MenuService, ConfigService
+        PhotoService, ProductService, MenuService, ConfigService,MessageService,ConfirmDialogModule,ConfirmationService
     ],
     bootstrap: [AppComponent]
 })

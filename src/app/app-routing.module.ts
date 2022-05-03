@@ -29,6 +29,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
 import {RegisterComponent} from "./components/register/register.component";
+import {ListOffreComponent} from "./components/list-offre/list-offre.component";
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -57,6 +58,7 @@ import {RegisterComponent} from "./components/register/register.component";
                     {path: 'pages/empty', component: EmptyComponent},
                     {path: 'icons', component: IconsComponent},
                     {path: 'blocks', component: BlocksComponent},
+                    {path:'offre/Campagne', component: ListOffreComponent},
                     {path: 'documentation', component: DocumentationComponent}
                 ],
             },

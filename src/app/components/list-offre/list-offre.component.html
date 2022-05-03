@@ -1,0 +1,92 @@
+<div class="grid" *ngIf="this.User.iduser !=null">
+    <div class="col-12">
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+            <ng-template pTemplate="left">
+            <h5>List Campagne</h5>
+            </ng-template>
+            <ng-template pTemplate="right">
+            <button pButton  label="New Campagne" (click)="openAjoutCampagne()" icon="pi pi-plus" class="p-button-success" ></button>
+            </ng-template>
+            </p-toolbar>
+            <p-table #dt1 [(selection)]="ListCampagme" [paginator]="true" styleClass="p-datatable-gridlines"
+                     [rowHover]="true" [globalFilterFields]="['nomCampagne','description','dateDebut','dateFin','seuil']"
+                     [rows]="6" [value]="ItemsCampagme" dataKey="id">
+                <ng-template pTemplate="caption">
+                    <div class="flex justify-content-between flex-column sm:flex-row">
+                        <button pButton label="Clear" class="p-button-outlined mb-2" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                        <span class="p-input-icon-left mb-2">
+							<i class="pi pi-search"></i>
+							<input pInputText type="text" #filter (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search Keyword" class="w-full"/>
+						</span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>
+                            <div class="flex justify-content-between align-items-center">
+                                Name
+                                <p-columnFilter type="text" field="nomCampagne" display="menu" placeholder="Search by name"></p-columnFilter>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="flex justify-content-between align-items-center">
+                                description
+                                <p-columnFilter type="text" field="description" display="menu" placeholder="Search by description"></p-columnFilter>
+                            </div>
+                        </th>
+
+                        <th>
+                            <div class="flex justify-content-between align-items-center">
+                                Date Debut
+                                <p-columnFilter type="date" field="dateDebut" display="menu" placeholder="yyyy-mm-dd"></p-columnFilter>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="flex justify-content-between align-items-center">
+                                Date Fin
+                                <p-columnFilter type="date" field="dateFin" display="menu" placeholder="yyyy-mm-dd"></p-columnFilter>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="flex justify-content-between align-items-center">
+                                Seuil
+                                <p-columnFilter type="numeric" field="seuil" display="menu" ></p-columnFilter>
+                            </div>
+                        </th>
+
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-campagne>
+                    <tr>
+                        <td style="min-width: 12rem;">
+                            {{campagne.nomCampagne}}
+                        </td>
+                        <td style="min-width: 12rem;">
+                            <span class="image-text ml-2">{{campagne.description}}</span>
+                        </td>
+
+                        <td style="min-width: 10rem;">
+                            {{campagne.dateDebut }}
+                        </td>
+                        <td style="min-width: 10rem;">
+                            {{campagne.dateFin }}
+                        </td>
+                        <td style="min-width: 10rem;">
+                            {{campagne.seuil }}
+                        </td>
+
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        In total there are {{ItemsCampagme ? ItemsCampagme.length : 0 }} items.
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+        <app-ajout-campagne></app-ajout-campagne>
+
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>
