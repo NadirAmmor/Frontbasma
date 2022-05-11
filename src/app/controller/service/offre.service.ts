@@ -11,6 +11,7 @@ export class OffreService {
     private _url = environment.baseUrl;
     private _Campagme: Campagne;
     private _ListCampagme: Array<Campagne>;
+    private _List5Campagme: Array<Campagne>;
     private _ItemsCampagme: Array<Campagne>;
     private _submitted: boolean;
     private _submittedCampagne: boolean;
@@ -68,7 +69,16 @@ export class OffreService {
     set ListCampagme(value: Array<Campagne>) {
         this._ListCampagme = value;
     }
+    get List5Campagme(): Array<Campagne> {
+        if(this._List5Campagme== null){
+            this._List5Campagme = new Array<Campagne>();
+        }
+        return this._List5Campagme;
+    }
 
+    set List5Campagme(value: Array<Campagne>) {
+        this._List5Campagme = value;
+    }
     get ItemsCampagme(): Array<Campagne> {
         if(this._ItemsCampagme== null){
             this._ItemsCampagme = new Array<Campagne>();
@@ -85,6 +95,10 @@ export class OffreService {
     }
     public addOffre(): Observable<Campagne> {
         return this.http.post<Campagne>(this.url + 'Campagne/',this.Campagme);
+
+    }
+    public FindLast5(): Observable<Array<Campagne>> {
+        return this.http.get<Array<Campagne>>(this.url + 'Campagne/last5/');
 
     }
 }

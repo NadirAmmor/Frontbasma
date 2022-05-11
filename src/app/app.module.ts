@@ -144,6 +144,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ListOffreComponent } from './components/list-offre/list-offre.component';
 import { AjoutCampagneComponent } from './components/ajout-campagne/ajout-campagne.component';
 import {ConfirmationService, MessageService} from "primeng/api";
+import { OffrePageComponent } from './components/offre-page/offre-page.component';
 
 @NgModule({
     imports: [
@@ -280,6 +281,7 @@ import {ConfirmationService, MessageService} from "primeng/api";
         RegisterComponent,
         ListOffreComponent,
         AjoutCampagneComponent,
+        OffrePageComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

@@ -25,6 +25,9 @@ export class ListOffreComponent implements OnInit {
   constructor(public app: AppComponent,public auth: AuthentificationService,public configService: ConfigService, private router: Router,private offre: OffreService) { }
 
   ngOnInit(): void {
+      if(this.User.username== null){
+          this.router.navigate(['/pages/error']);
+      }
       this.offre.FindAllCampagne().subscribe(
       data => {
           this.ItemsCampagme = data;

@@ -9,7 +9,7 @@
         </div>
         <div class="field">
             <label for="desc">Offre</label>
-            <input [(ngModel)]="Campagme.description" autofocus id="desc" pInputText required type="text"/>
+            <textarea [(ngModel)]="Campagme.description" autofocus id="desc" pInputTextarea required type="textarea"></textarea>
             <small *ngIf="submittedCampagne && !Campagme.description" class="p-invalid">Offre is required.</small>
         </div>
         <div class="field">

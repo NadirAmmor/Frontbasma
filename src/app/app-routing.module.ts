@@ -30,6 +30,7 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
 import {RegisterComponent} from "./components/register/register.component";
 import {ListOffreComponent} from "./components/list-offre/list-offre.component";
+import {OffrePageComponent} from "./components/offre-page/offre-page.component";
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -64,6 +65,7 @@ import {ListOffreComponent} from "./components/list-offre/list-offre.component";
             },
             {path:'pages/landing', component: LandingComponent},
             {path:'pages/login', component: LoginComponent},
+            {path:'pages/offre', component: OffrePageComponent},
             {path:'pages/register', component: RegisterComponent},
             {path:'pages/error', component: ErrorComponent},
             {path:'pages/notfound', component: NotfoundComponent},
