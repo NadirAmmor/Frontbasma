@@ -14,7 +14,7 @@ export class Candidat {
     public commentaire2: string;
     public commentaire3: string;
     public commentaire4: string;
-    public Score: number;
+    public score: number;
     public IsCreatedBy: string;
     public campagne= new Campagne();
     public statut= new Statut();

@@ -5,8 +5,10 @@ import {ConfigService} from "../../service/app.config.service";
 import {Router} from "@angular/router";
 import {OffreService} from "../../controller/service/offre.service";
 import {Campagne} from "../../controller/model/campagne";
-import {HttpErrorResponse} from "@angular/common/http";
+import {HttpErrorResponse, HttpEvent, HttpEventType, HttpResponse} from "@angular/common/http";
 import {MessageService} from "primeng/api";
+import {Subscription} from "rxjs";
+import {FileUploadStatus} from "../../controller/model/FileUploadStatus";
 
 @Component({
   selector: 'app-ajout-campagne',
@@ -36,10 +38,10 @@ export class AjoutCampagneComponent implements OnInit {
                 }
             );
             this.messageService.add({
-                key: 'tst',
                 severity: 'success',
                 summary: 'Success Message',
-                detail: ' Connected'
+                detail: ' Campagne Added',
+                life:3000
             });
         }, (errorResponse: HttpErrorResponse) => {
             console.log(errorResponse);
@@ -48,7 +50,8 @@ export class AjoutCampagneComponent implements OnInit {
                 key: 'tst',
                 severity: 'error',
                 summary: 'Error Message',
-                detail: ' Failed to Connected'
+                detail: ' Failed to add Campagne',
+                life:3000
             });
         });
         this.createDialogCampagne = false;
@@ -79,4 +82,6 @@ export class AjoutCampagneComponent implements OnInit {
     set Campagme(value: Campagne) {
         this.offre.Campagme = value;
     }
+
+
 }

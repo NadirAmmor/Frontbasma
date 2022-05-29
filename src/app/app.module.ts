@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
@@ -59,7 +59,6 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { PasswordModule } from 'primeng/password';
 import { PickListModule } from 'primeng/picklist';
 import { ProgressBarModule } from 'primeng/progressbar';
-import { RadioButtonModule } from 'primeng/radiobutton';
 import { RatingModule } from 'primeng/rating';
 import { RippleModule } from 'primeng/ripple';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
@@ -145,9 +144,21 @@ import { ListOffreComponent } from './components/list-offre/list-offre.component
 import { AjoutCampagneComponent } from './components/ajout-campagne/ajout-campagne.component';
 import {ConfirmationService, MessageService} from "primeng/api";
 import { OffrePageComponent } from './components/offre-page/offre-page.component';
+import { UserComponent } from './components/user/user.component';
+import { AjoutUserComponent } from './components/ajout-user/ajout-user.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { CritereComponent } from './components/critere/critere.component';
+import { NewCritereComponent } from './components/new-critere/new-critere.component';
+import { PostulerComponent } from './components/postuler/postuler.component';
+import { ListCandidatComponent } from './components/list-candidat/list-candidat.component';
+import { NewCandidatComponent } from './components/new-candidat/new-candidat.component';
+import { EditCampagneComponent } from './components/edit-campagne/edit-campagne.component';
+import { EditCritereComponent } from './components/edit-critere/edit-critere.component';
+import {RadioButtonModule} from 'primeng/radiobutton';
 
 @NgModule({
     imports: [
+        RadioButtonModule,
         BrowserModule,
         FormsModule,
         AppRoutingModule,
@@ -234,6 +245,7 @@ import { OffrePageComponent } from './components/offre-page/offre-page.component
         TreeTableModule,
         VirtualScrollerModule,
         AppCodeModule,
+        ReactiveFormsModule,
         StyleClassModule,
     ],
     declarations: [
@@ -282,6 +294,16 @@ import { OffrePageComponent } from './components/offre-page/offre-page.component
         ListOffreComponent,
         AjoutCampagneComponent,
         OffrePageComponent,
+        UserComponent,
+        AjoutUserComponent,
+        EditUserComponent,
+        CritereComponent,
+        NewCritereComponent,
+        PostulerComponent,
+        ListCandidatComponent,
+        NewCandidatComponent,
+        EditCampagneComponent,
+        EditCritereComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

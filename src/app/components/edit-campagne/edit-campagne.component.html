@@ -1,5 +1,6 @@
-<p-dialog [(visible)]="createDialogCampagne" [modal]="true" [style]="{width: '600px'}" header="New Offre"
+<p-dialog [(visible)]="editDialogCampagne" [modal]="true" [style]="{width: '600px'}" header="New Offre"
           styleClass="p-fluid">
+
     <ng-template pTemplate="content">
 
         <div class="field">
@@ -14,12 +15,11 @@
                 <option value="Pepper1io">Pepper1io</option>
                 <option value="S3M">S3M</option>
                 <option value="INCOSYS">INCOSYS</option>
-            </select>
-        </div>
+            </select>  </div>
         <div class="field">
             <label for="desc">description</label>
             <textarea [(ngModel)]="Campagme.description" autofocus id="desc" pInputTextarea required type="textarea"></textarea>
-            <small *ngIf="submittedCampagne && !Campagme.description" class="p-invalid">Offre is required.</small>
+            <small *ngIf="submittedEditCampagne && !Campagme.description" class="p-invalid">Offre is required.</small>
         </div>
         <!--<div class="field">
             <label for="seuil">Seuil</label>
@@ -27,16 +27,17 @@
             <small *ngIf="submittedCampagne && !Campagme.seuil" class="p-invalid">Seuil is required.</small>
         </div>-->
 
-       <div class="field">
+        <div class="field">
             <label for="DateD">Date Debut de l'offre</label>
             <input [(ngModel)]="Campagme.dateDebut" autofocus id="DateD" pInputText required type="date"/>
-            <small *ngIf="submittedCampagne && !Campagme.dateDebut" class="p-invalid">date is required.</small>
+            <small *ngIf="submittedEditCampagne && !Campagme.dateDebut" class="p-invalid">date is required.</small>
         </div>
         <div class="field">
             <label for="DateF">Date Fin de l'offre</label>
             <input [(ngModel)]="Campagme.dateFin" autofocus id="DateF" pInputText required type="date"/>
-            <small *ngIf="submittedCampagne && !Campagme.dateFin" class="p-invalid">date is required.</small>
+            <small *ngIf="submittedEditCampagne && !Campagme.dateFin" class="p-invalid">date is required.</small>
         </div>
+
 
 
 
@@ -45,7 +46,9 @@
     <ng-template pTemplate="footer" style="background-color: lavender;">
         <button (click)="hideCreateDialog()" class="p-button-text" icon="pi pi-times" label="Cancel" pButton
                 pRipple></button>
-        <button (click)="addOffre()" class="p-button-text" icon="pi pi-check" label="Save" pButton pRipple></button>
+        <button (click)="editOffre()" class="p-button-text" icon="pi pi-check" label="Save" pButton pRipple></button>
     </ng-template>
+    <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+
 </p-dialog>
 

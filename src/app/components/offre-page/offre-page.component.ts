@@ -7,6 +7,10 @@ import {OffreService} from "../../controller/service/offre.service";
 import {AuthentificationService} from "../../controller/service/authentification.service";
 import {User} from "../../controller/model/user";
 import {TreeNode} from "primeng/api";
+import {UserService} from "../../controller/service/user.service";
+import {Candidat} from "../../controller/model/candidat";
+import {CandidatService} from "../../controller/service/candidat.service";
+import {Critere} from "../../controller/model/critere";
 
 @Component({
   selector: 'app-offre-page',
@@ -15,7 +19,7 @@ import {TreeNode} from "primeng/api";
 })
 export class OffrePageComponent implements OnInit {
     files: TreeNode[];
-    constructor(public configService: ConfigService,public app: AppComponent, public router: Router,private offre: OffreService,private auth: AuthentificationService) { }
+    constructor(public cand: CandidatService,public users:UserService,public configService: ConfigService,public app: AppComponent, public router: Router,private offre: OffreService,private auth: AuthentificationService) { }
 
   ngOnInit(): void {
       this.files = [{
@@ -305,5 +309,69 @@ export class OffrePageComponent implements OnInit {
 
     set ListCampagme(value: Array<Campagne>) {
         this.offre.List5Campagme = value;
+    }
+    get candidat(): Candidat {
+
+        return this.cand.candidat;
+    }
+
+    set candidat(value: Candidat) {
+        this.cand.candidat = value;
+    }
+
+    get submittedCand(): boolean {
+        return this.cand.submitted;
+    }
+
+    set submittedCand(value: boolean) {
+        this.cand.submitted = value;
+    }
+
+    get createDialogCandidat(): boolean {
+        return this.cand.createDialogCandidat;
+    }
+    get Campagnecandidat(): Campagne {
+
+        return this.cand.Campagnecandidat;
+    }
+
+    set Campagnecandidat(value: Campagne) {
+        this.cand.Campagnecandidat = value;
+    }
+    set createDialogCandidat(value: boolean) {
+        this.cand.createDialogCandidat = value;
+    }
+    get createDialogCandidatRespCriter(): boolean {
+        return this.cand.createDialogCandidatRespCriter;
+    }
+
+    set createDialogCandidatRespCriter(value: boolean) {
+        this.cand.createDialogCandidatRespCriter = value;
+    }
+    get criter(): Critere {
+        return this.cand.criter;
+    }
+    set criter(value: Critere) {
+        this.cand.criter = value;
+    }
+
+    get Listcriter(): Array<Critere> {
+        return this.cand.Listcriter;
+    }
+
+    set Listcriter(value: Array<Critere>) {
+        this.cand.Listcriter = value;
+    }
+    public openPostuler(of: Campagne) {
+        this.submittedCand = false;
+        this.Campagnecandidat=of;
+        this.cand.getAllCriter(this.Campagnecandidat).subscribe(data=>{
+            this.Listcriter=data;
+            this.criter=this.Listcriter[0];
+        });
+        this.createDialogCandidatRespCriter=false;
+        this.createDialogCandidat = true;
+        this.candidat = new Candidat();
+
     }
 }

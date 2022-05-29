@@ -31,6 +31,7 @@ import { AccessComponent } from './components/access/access.component';
 import {RegisterComponent} from "./components/register/register.component";
 import {ListOffreComponent} from "./components/list-offre/list-offre.component";
 import {OffrePageComponent} from "./components/offre-page/offre-page.component";
+import {UserComponent} from "./components/user/user.component";
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -60,6 +61,7 @@ import {OffrePageComponent} from "./components/offre-page/offre-page.component";
                     {path: 'icons', component: IconsComponent},
                     {path: 'blocks', component: BlocksComponent},
                     {path:'offre/Campagne', component: ListOffreComponent},
+                    {path:'users', component: UserComponent},
                     {path: 'documentation', component: DocumentationComponent}
                 ],
             },

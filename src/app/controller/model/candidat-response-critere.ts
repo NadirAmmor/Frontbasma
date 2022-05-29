@@ -7,4 +7,5 @@ export class CandidatResponseCritere {
     public response: string;
     public critere= new Critere();
     public candidat= new Candidat();
+    public campagne= new Campagne();
 }
