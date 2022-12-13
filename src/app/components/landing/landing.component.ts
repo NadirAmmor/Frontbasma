@@ -4,12 +4,10 @@ import { AppConfig } from '../../api/appconfig';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import {AppComponent} from "../../app.component";
-import {Campagne} from "../../controller/model/campagne";
 import {OffreService} from "../../controller/service/offre.service";
 import {User} from "../../controller/model/user";
 import {UserService} from "../../controller/service/user.service";
-import {Candidat} from "../../controller/model/candidat";
-import {CandidatService} from "../../controller/service/candidat.service";
+import {DocumentService} from "../../controller/service/document.service";
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
@@ -21,7 +19,7 @@ export class LandingComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
 
-  constructor(public cand:CandidatService ,public users: UserService,public configService: ConfigService,public app: AppComponent, public router: Router,private offre: OffreService) { }
+  constructor(public cand:DocumentService , public users: UserService, public configService: ConfigService, public app: AppComponent, public router: Router, private offre: OffreService) { }
 
   ngOnInit(): void {
       this.app.menuMode = 'overlay';
@@ -29,17 +27,9 @@ export class LandingComponent implements OnInit, OnDestroy {
     this.subscription = this.configService.configUpdate$.subscribe(config => {
       this.config = config;
     });
-    this.offre.FindLast5().subscribe(data=>{
-        this.ListCampagme = data;
-        });
-  }
-    get ListCampagme(): Array<Campagne> {
-        return this.offre.ListCampagme;
-    }
 
-    set ListCampagme(value: Array<Campagne>) {
-        this.offre.ListCampagme = value;
-    }
+  }
+
   ngOnDestroy(): void {
     if(this.subscription){
       this.subscription.unsubscribe();
@@ -71,14 +61,6 @@ export class LandingComponent implements OnInit, OnDestroy {
         this.users.createDialog = value;
     }
 
-    get candidat(): Candidat {
-
-        return this.cand.candidat;
-    }
-
-    set candidat(value: Candidat) {
-        this.cand.candidat = value;
-    }
 
     get submittedCand(): boolean {
         return this.cand.submitted;
@@ -95,18 +77,10 @@ export class LandingComponent implements OnInit, OnDestroy {
     set createDialogCandidat(value: boolean) {
         this.cand.createDialogCandidat = value;
     }
-    get Campagnecandidat(): Campagne {
 
-        return this.cand.Campagnecandidat;
-    }
-
-    set Campagnecandidat(value: Campagne) {
-        this.cand.Campagnecandidat = value;
-    }
-    public openPostuler(of: Campagne) {
+    public openPostuler() {
         this.submittedCand = false;
         this.createDialogCandidat = true;
-        this.candidat = new Candidat();
-        this.Campagnecandidat=of;
+
     }
 }

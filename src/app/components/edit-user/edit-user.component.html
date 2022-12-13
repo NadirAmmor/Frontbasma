@@ -4,29 +4,29 @@
 
         <div class="field">
             <label for="nom"> FirstName </label>
-            <input [(ngModel)]="userA.nomUser" autofocus id="nom" pInputText required type="text"/>
-            <small *ngIf="submitted && !userA.nomUser "class="p-invalid">name is required.</small>
+            <input  autofocus id="nom" pInputText required type="text"/>
+<!--            <small *ngIf="submitted && !userA.nomUser "class="p-invalid">name is required.</small>-->
         </div>
         <div class="field">
             <label for="desc">LastName</label>
-            <textarea [(ngModel)]="userA.prenomUser" autofocus id="desc" pInputTextarea required type="textarea"></textarea>
-            <small *ngIf="submitted && !userA.prenomUser " class="p-invalid">Offre is required.</small>
+            <textarea  autofocus id="desc" pInputTextarea required type="textarea"></textarea>
+<!--            <small *ngIf="submitted && !userA.prenomUser " class="p-invalid">Offre is required.</small>-->
         </div>
         <div class="field">
             <label for="seuil">Username</label>
-            <input [(ngModel)]="userA.username" autofocus id="seuil" pInputText required type="text"/>
-            <small *ngIf="submitted && !userA.username" class="p-invalid">Seuil is required.</small>
+            <input  autofocus id="seuil" pInputText required type="text"/>
+<!--            <small *ngIf="submitted && !userA.username" class="p-invalid">Seuil is required.</small>-->
         </div>
 
         <div class="field">
             <label for="DateD">password</label>
-            <input [(ngModel)]="userA.password" autofocus id="DateD" pInputText required type="password"/>
-            <small *ngIf="submitted&& !userA.password" class="p-invalid">date is required.</small>
+            <input autofocus id="DateD" pInputText required type="password"/>
+<!--            <small *ngIf="submitted&& !userA.password" class="p-invalid">date is required.</small>-->
         </div>
         <div class="field">
             <label for="DateF">Email</label>
-            <input [(ngModel)]="userA.emailUser" autofocus id="DateF" pInputText required type="email"/>
-            <small *ngIf="submitted && !userA.emailUser" class="p-invalid">date is required.</small>
+            <input autofocus id="DateF" pInputText required type="email"/>
+<!--            <small *ngIf="submitted && !userA.emailUser" class="p-invalid">date is required.</small>-->
         </div>
 
 

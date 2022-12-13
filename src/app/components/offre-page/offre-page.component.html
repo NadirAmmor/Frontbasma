@@ -1,4 +1,4 @@
-<div class="layout-topbar" *ngIf="this.User.username ==null" >
+<div class="layout-topbar"  >
     <p-toast></p-toast>
     <a class="flex align-items-center" href="#">
         <img src="assets/layout/images/omni.jpg"  height="50" class="mr-0 lg:mr-2"><span class="text-900 font-medium text-2xl line-height-3 mr-8"></span>
@@ -49,27 +49,27 @@
     </div>
     <div class="col-9"  style="float: right">
         <div class="card ">
-     <p-dataView #dv [paginator]="true" [rows]="7" [value]="ListCampagme" filterBy="name"
-                layout="list">
+<!--     <p-dataView #dv [paginator]="true" [rows]="7" [value]="ListCampagme" filterBy="name"-->
+<!--                layout="list">-->
 
-        <ng-template let-offre pTemplate="listItem">
-            <div class="p-col-12" style="width: 100%">
-                <div class="product-list-item">
-                    <img [src]="'assets/demo/images/'+offre.nomCampagne+'.png'" [alt]="offre.nomCampagne"/>
-                    <div class="product-list-detail" style="width: 100%">
-                        <div class="product-name" style="width: 100%">{{offre.nomCampagne}}</div>
-                        <b><u>post at :</u></b><span> {{offre.dateDebut}}</span><br>
-                        <b><u>endTime :</u></b><span> {{offre.dateFin}}</span><br>
-                        <div class="product-description" style="width: 100%"><b><u>Description :</u></b> {{offre.description}}</div>
-                    </div>
-                    <div class="product-list-action">
-                        <p-button icon="" (onClick)="openPostuler(offre)" label="postuler" ></p-button>
-                    </div>
-                </div>
-            </div>
-        </ng-template>
+<!--        <ng-template let-offre pTemplate="listItem">-->
+<!--            <div class="p-col-12" style="width: 100%">-->
+<!--                <div class="product-list-item">-->
+<!--                    <img [src]="'assets/demo/images/'+offre.nomCampagne+'.png'" [alt]="offre.nomCampagne"/>-->
+<!--                    <div class="product-list-detail" style="width: 100%">-->
+<!--                        <div class="product-name" style="width: 100%">{{offre.nomCampagne}}</div>-->
+<!--                        <b><u>post at :</u></b><span> {{offre.dateDebut}}</span><br>-->
+<!--                        <b><u>endTime :</u></b><span> {{offre.dateFin}}</span><br>-->
+<!--                        <div class="product-description" style="width: 100%"><b><u>Description :</u></b> {{offre.description}}</div>-->
+<!--                    </div>-->
+<!--                    <div class="product-list-action">-->
+<!--                        <p-button icon="" (onClick)="openPostuler(offre)" label="postuler" ></p-button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </ng-template>-->
 
-    </p-dataView>
+<!--    </p-dataView>-->
         </div>
         <app-postuler></app-postuler>
 </div>

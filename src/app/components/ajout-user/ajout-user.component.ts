@@ -8,7 +8,6 @@ import {MessageService} from "primeng/api";
 import {UserService} from "../../controller/service/user.service";
 import {User} from "../../controller/model/user";
 import {HttpErrorResponse} from "@angular/common/http";
-import {Campagne} from "../../controller/model/campagne";
 
 @Component({
   selector: 'app-ajout-user',

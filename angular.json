@@ -37,15 +37,17 @@
                             "node_modules/prismjs/prism.js",
                             "node_modules/prismjs/components/prism-typescript.js"
                         ],
-                        "allowedCommonJsDependencies": ["chart.js"]
+                        "allowedCommonJsDependencies": ["chart.js",
+                            "@grapecity/gcpdfviewer"
+                        ]
                     },
                     "configurations": {
                         "production": {
                             "budgets": [
                                 {
                                     "type": "initial",
-                                    "maximumWarning": "3mb",
-                                    "maximumError": "5mb"
+                                    "maximumWarning": "8mb",
+                                    "maximumError": "10mb"
                                 },
                                 {
                                     "type": "anyComponentStyle",

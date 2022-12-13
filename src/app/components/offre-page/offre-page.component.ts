@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Campagne} from "../../controller/model/campagne";
 import {ConfigService} from "../../service/app.config.service";
 import {AppComponent} from "../../app.component";
 import {Router} from "@angular/router";
@@ -8,9 +7,7 @@ import {AuthentificationService} from "../../controller/service/authentification
 import {User} from "../../controller/model/user";
 import {TreeNode} from "primeng/api";
 import {UserService} from "../../controller/service/user.service";
-import {Candidat} from "../../controller/model/candidat";
-import {CandidatService} from "../../controller/service/candidat.service";
-import {Critere} from "../../controller/model/critere";
+import {DocumentService} from "../../controller/service/document.service";
 
 @Component({
   selector: 'app-offre-page',
@@ -19,7 +16,7 @@ import {Critere} from "../../controller/model/critere";
 })
 export class OffrePageComponent implements OnInit {
     files: TreeNode[];
-    constructor(public cand: CandidatService,public users:UserService,public configService: ConfigService,public app: AppComponent, public router: Router,private offre: OffreService,private auth: AuthentificationService) { }
+    constructor(public cand: DocumentService, public users:UserService, public configService: ConfigService, public app: AppComponent, public router: Router, private offre: OffreService, private auth: AuthentificationService) { }
 
   ngOnInit(): void {
       this.files = [{
@@ -293,13 +290,9 @@ export class OffrePageComponent implements OnInit {
              ]
       }
       ];
-      this.offre.FindAllCampagne().subscribe(data=>{
-          this.ListCampagme = data;
-      });
+
   }
-    get ListCampagme(): Array<Campagne> {
-        return this.offre.List5Campagme;
-    }
+
     get User(): User {
         return this.auth.User;
     }
@@ -307,17 +300,6 @@ export class OffrePageComponent implements OnInit {
         this.auth.User = value;
     }
 
-    set ListCampagme(value: Array<Campagne>) {
-        this.offre.List5Campagme = value;
-    }
-    get candidat(): Candidat {
-
-        return this.cand.candidat;
-    }
-
-    set candidat(value: Candidat) {
-        this.cand.candidat = value;
-    }
 
     get submittedCand(): boolean {
         return this.cand.submitted;
@@ -330,14 +312,7 @@ export class OffrePageComponent implements OnInit {
     get createDialogCandidat(): boolean {
         return this.cand.createDialogCandidat;
     }
-    get Campagnecandidat(): Campagne {
 
-        return this.cand.Campagnecandidat;
-    }
-
-    set Campagnecandidat(value: Campagne) {
-        this.cand.Campagnecandidat = value;
-    }
     set createDialogCandidat(value: boolean) {
         this.cand.createDialogCandidat = value;
     }
@@ -348,30 +323,14 @@ export class OffrePageComponent implements OnInit {
     set createDialogCandidatRespCriter(value: boolean) {
         this.cand.createDialogCandidatRespCriter = value;
     }
-    get criter(): Critere {
-        return this.cand.criter;
-    }
-    set criter(value: Critere) {
-        this.cand.criter = value;
-    }
 
-    get Listcriter(): Array<Critere> {
-        return this.cand.Listcriter;
-    }
 
-    set Listcriter(value: Array<Critere>) {
-        this.cand.Listcriter = value;
-    }
-    public openPostuler(of: Campagne) {
+
+    public openPostuler() {
         this.submittedCand = false;
-        this.Campagnecandidat=of;
-        this.cand.getAllCriter(this.Campagnecandidat).subscribe(data=>{
-            this.Listcriter=data;
-            this.criter=this.Listcriter[0];
-        });
+
         this.createDialogCandidatRespCriter=false;
         this.createDialogCandidat = true;
-        this.candidat = new Candidat();
 
     }
 }

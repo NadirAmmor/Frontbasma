@@ -5,7 +5,6 @@ import {ConfigService} from "../../service/app.config.service";
 import {Router} from "@angular/router";
 import {OffreService} from "../../controller/service/offre.service";
 import {User} from "../../controller/model/user";
-import {Campagne} from "../../controller/model/campagne";
 import {UserService} from "../../controller/service/user.service";
 import {Table} from "primeng/table";
 import {AppConfig} from "../../api/appconfig";
@@ -14,7 +13,7 @@ import {ConfirmationService, MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-user',
-  templateUrl: './user.component.html',
+  templateUrl: '../ProjetBasma/user.component.html',
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
@@ -94,7 +93,7 @@ export class UserComponent implements OnInit {
     public delete(us: User) {
         this.userA = us;
         this.confirmationService.confirm({
-            message: 'Are you sure you want to delete ' + us.nomUser + '?',
+            message: 'Are you sure you want to delete ' + us.username + '?',
             header: 'Confirm',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {

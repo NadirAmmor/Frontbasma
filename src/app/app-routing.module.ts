@@ -24,12 +24,12 @@ import { InvalidStateComponent } from './components/invalidstate/invalidstate.co
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { IconsComponent } from './components/icons/icons.component';
 import { LandingComponent } from './components/landing/landing.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/ProjetBasma/login/login.component';
 import { ErrorComponent } from './components/error/error.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
-import {RegisterComponent} from "./components/register/register.component";
-import {ListOffreComponent} from "./components/list-offre/list-offre.component";
+import {RegisterComponent} from "./components/ProjetBasma/register/register.component";
+import {ListDocComponent} from "./components/ProjetBasma/list-doc/list-doc.component";
 import {OffrePageComponent} from "./components/offre-page/offre-page.component";
 import {UserComponent} from "./components/user/user.component";
 @NgModule({
@@ -60,7 +60,7 @@ import {UserComponent} from "./components/user/user.component";
                     {path: 'pages/empty', component: EmptyComponent},
                     {path: 'icons', component: IconsComponent},
                     {path: 'blocks', component: BlocksComponent},
-                    {path:'offre/Campagne', component: ListOffreComponent},
+                    {path:'ListDoc', component: ListDocComponent},
                     {path:'users', component: UserComponent},
                     {path: 'documentation', component: DocumentationComponent}
                 ],

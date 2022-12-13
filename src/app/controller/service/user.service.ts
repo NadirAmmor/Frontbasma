@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {User} from "../model/user";
 import {Observable} from "rxjs";
-import {Campagne} from "../model/campagne";
 import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 
@@ -98,7 +97,7 @@ export class UserService {
 
     }
     public DeleteUsers(us: User): Observable<User> {
-        return this.http.delete<User>(this.url + 'admin/user/deleteUser/'+us.iduser);
+        return this.http.delete<User>(this.url + 'admin/user/deleteUser/'+us.id);
 
     }
     public addUser(): Observable<User> {

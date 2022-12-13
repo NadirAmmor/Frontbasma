@@ -5,8 +5,7 @@ import {AuthentificationService} from "../../controller/service/authentification
 import {ConfigService} from "../../service/app.config.service";
 import {Router} from "@angular/router";
 import {OffreService} from "../../controller/service/offre.service";
-import {Critere} from "../../controller/model/critere";
-import {Campagne} from "../../controller/model/campagne";
+
 import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
@@ -21,13 +20,7 @@ export class EditCritereComponent implements OnInit {
 
     ngOnInit(): void {
     }
-    get critere(): Critere {
-        return this.offre.Selectedcritere;
-    }
 
-    set critere(value: Critere) {
-        this.offre.Selectedcritere = value;
-    }
     get editDialogCritere(): boolean {
         return this.offre.editDialogCritere;
     }
@@ -42,42 +35,10 @@ export class EditCritereComponent implements OnInit {
     set submittedNewCritere(value: boolean) {
         this.offre.submittedNewCritere = value;
     }
-    set critereList(value: Array<Critere>) {
-        this.offre.critereList = value;
-    }
-    get CampagmeCritere(): Campagne {
-        return this.offre.CampagmeCritere;
-    }
 
-    set CampagmeCritere(value: Campagne) {
-        this.offre.CampagmeCritere = value;
-    }
     public EditCritere() {
         this.submittedNewCritere = true;
-        this.critere.campagne=this.CampagmeCritere;
-        this.offre.EditCritere().subscribe(data => {
-            this.offre.FindCampagneCritere().subscribe(
-                data => {
-                    this.critereList= data;
-                }
-            );
-            this.messageService.add({
-                severity: 'success',
-                summary: 'Success Message',
-                detail: ' Critere Added',
-                life: 3000
-            });
-        }, (errorResponse: HttpErrorResponse) => {
-            console.log(errorResponse);
-            alert('errorResponse');
-            this.messageService.add({
-                severity: 'error',
-                summary: 'Error Message',
-                detail: ' Failed to add critere',
-                life: 3000
-            });
-        });
-        this.critere = new Critere();
+
         this.editDialogCritere = false;
     }
     public hideCreateDialog() {

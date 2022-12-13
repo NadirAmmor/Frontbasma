@@ -5,18 +5,18 @@
 
         <div class="field">
             <label for="nom"> nom critere </label>
-            <input [(ngModel)]="critere.nomCritere" autofocus id="nom" pInputText required type="text"/>
-            <small *ngIf="submittedNewCritere && !critere.nomCritere "class="p-invalid">nom is required.</small>
+            <input  autofocus id="nom" pInputText required type="text"/>
+<!--            <small *ngIf="submittedNewCritere && !docView.nomCritere "class="p-invalid">nom is required.</small>-->
         </div>
         <div class="field">
             <label for="desc">Valeur Positive</label>
-            <input [(ngModel)]="critere.valPositive" autofocus id="desc" pInputTextarea required type="text"/>
-            <small *ngIf="submittedNewCritere && !critere.valPositive " class="p-invalid">valPositive is required.</small>
+            <input  autofocus id="desc" pInputTextarea required type="text"/>
+<!--            <small *ngIf="submittedNewCritere && !docView.valPositive " class="p-invalid">valPositive is required.</small>-->
         </div>
         <div class="field">
             <label for="seuil">Valeur Negative</label>
-            <input [(ngModel)]="critere.valNegative" autofocus id="seuil" pInputText required type="text"/>
-            <small *ngIf="submittedNewCritere && !critere.valNegative" class="p-invalid">Valeur Negative is required.</small>
+            <input autofocus id="seuil" pInputText required type="text"/>
+<!--            <small *ngIf="submittedNewCritere && !docView.valNegative" class="p-invalid">Valeur Negative is required.</small>-->
         </div>
 
     </ng-template>

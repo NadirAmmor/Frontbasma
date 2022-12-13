@@ -135,29 +135,30 @@ import { PhotoService } from './service/photoservice';
 import { ProductService } from './service/productservice';
 import { MenuService } from './service/app.menu.service';
 import { ConfigService } from './service/app.config.service';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/ProjetBasma/login/login.component';
 import { ErrorComponent } from './components/error/error.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
-import { RegisterComponent } from './components/register/register.component';
-import { ListOffreComponent } from './components/list-offre/list-offre.component';
-import { AjoutCampagneComponent } from './components/ajout-campagne/ajout-campagne.component';
+import { RegisterComponent } from './components/ProjetBasma/register/register.component';
+import { ListDocComponent } from './components/ProjetBasma/list-doc/list-doc.component';
+import { AjoutDocComponent } from './components/ProjetBasma/ajout-doc/ajout-doc.component';
 import {ConfirmationService, MessageService} from "primeng/api";
 import { OffrePageComponent } from './components/offre-page/offre-page.component';
 import { UserComponent } from './components/user/user.component';
 import { AjoutUserComponent } from './components/ajout-user/ajout-user.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
-import { CritereComponent } from './components/critere/critere.component';
+import {DocviewComponent, SafePipe} from './components/ProjetBasma/docView/docview.component';
 import { NewCritereComponent } from './components/new-critere/new-critere.component';
 import { PostulerComponent } from './components/postuler/postuler.component';
 import { ListCandidatComponent } from './components/list-candidat/list-candidat.component';
 import { NewCandidatComponent } from './components/new-candidat/new-candidat.component';
-import { EditCampagneComponent } from './components/edit-campagne/edit-campagne.component';
+import { EditDocComponent } from './components/ProjetBasma/edit-doc/edit-doc.component';
 import { EditCritereComponent } from './components/edit-critere/edit-critere.component';
 import {RadioButtonModule} from 'primeng/radiobutton';
-
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 @NgModule({
     imports: [
+        PdfViewerModule,
         RadioButtonModule,
         BrowserModule,
         FormsModule,
@@ -291,19 +292,20 @@ import {RadioButtonModule} from 'primeng/radiobutton';
         NotfoundComponent,
         AccessComponent,
         RegisterComponent,
-        ListOffreComponent,
-        AjoutCampagneComponent,
+        ListDocComponent,
+        AjoutDocComponent,
         OffrePageComponent,
         UserComponent,
         AjoutUserComponent,
         EditUserComponent,
-        CritereComponent,
+        DocviewComponent,
         NewCritereComponent,
         PostulerComponent,
         ListCandidatComponent,
         NewCandidatComponent,
-        EditCampagneComponent,
+        EditDocComponent,
         EditCritereComponent,
+        SafePipe
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
