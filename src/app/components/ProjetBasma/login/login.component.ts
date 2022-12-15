@@ -85,8 +85,13 @@ export class LoginComponent implements OnInit, OnDestroy {
                     summary: 'Success Message',
                     detail: ' Connected'
                 });
+                if(this.User.role.name == 'user') {
 
-                this.router.navigate(['/ListDoc']);
+                    this.router.navigate(['/ListDoc']);
+
+                }else if(this.User.role.name == 'admin'){
+                    this.router.navigate(['/uikit/table']);
+                }
             }, (errorResponse: HttpErrorResponse) => {
                 console.log(errorResponse);
                 alert('errorResponse');

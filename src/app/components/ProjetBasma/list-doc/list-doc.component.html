@@ -27,30 +27,30 @@
                         <th>
                             <div class="flex justify-content-between align-items-center">
                                 Name
-                                <p-columnFilter type="text" field="nomCampagne" display="menu" placeholder="Search by name"></p-columnFilter>
+                                <p-columnFilter type="text" field="titre" display="menu" placeholder="Search by name"></p-columnFilter>
                             </div>
                         </th>
                         <th>
                             <div class="flex justify-content-between align-items-center">
                                 domaine
-                                <p-columnFilter type="text" field="description" display="menu" placeholder="Search by description"></p-columnFilter>
+                                <p-columnFilter type="text" field="thematique.domaine" display="menu" placeholder="Search by description"></p-columnFilter>
                             </div>
                         </th>
 
                         <th>
                             <div class="flex justify-content-between align-items-center">
                                 Type document
-                                <p-columnFilter type="date" field="dateDebut" display="menu" placeholder="yyyy-mm-dd"></p-columnFilter>
+                                <p-columnFilter type="text" field="typeDoc" display="menu" placeholder="yyyy-mm-dd"></p-columnFilter>
                             </div>
                         </th>
                         <th>
                             <div class="flex justify-content-between align-items-center">
                                 status
-                                <p-columnFilter type="date" field="dateFin" display="menu" placeholder="yyyy-mm-dd"></p-columnFilter>
+                                <p-columnFilter type="text" field="statut" display="menu" placeholder="yyyy-mm-dd"></p-columnFilter>
                             </div>
                         </th>
 
-                        <th>Critere</th>
+                        <th>view Document</th>
                         <th>Action</th>
                     </tr>
                 </ng-template>

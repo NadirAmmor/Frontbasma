@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppMainComponent } from './app.main.component';
+import {AuthentificationService} from "./controller/service/authentification.service";
+import {User} from "./controller/model/user";
 
 @Component({
     selector: 'app-menu',
@@ -23,16 +25,31 @@ export class AppMenuComponent implements OnInit {
 
     model: any[];
 
-    constructor(public appMain: AppMainComponent) { }
-
+    constructor(public appMain: AppMainComponent,private auth: AuthentificationService) { }
+    get User(): User {
+        return this.auth.User;
+    }
     ngOnInit() {
-        this.model = [
-            {
-                label: 'Home',
-                items:[
-                    {label: 'List Document',icon: 'pi pi-fw pi-home', routerLink: ['/ListDoc']},
-                ]
-            }
+        if(this.User.role.name == 'user') {
+
+            this.model = [
+                {
+                    label: 'Home',
+                    items:[
+                        {label: 'List Document',icon: 'pi pi-fw pi-home', routerLink: ['/ListDoc']},
+                    ]
+                }]
+
+        }else if(this.User.role.name == 'admin'){
+            this.model = [
+                {
+                    label: 'Home',
+                    items:[
+                        {label: 'testAdmin',icon: 'pi pi-fw pi-home', routerLink: ['/uikit/table']},
+                    ]
+                }]
+        }
+
             // {
             //     label: 'UI Components',
             //     items: [
@@ -133,7 +150,7 @@ export class AppMenuComponent implements OnInit {
             //         }
             //     ]
             // }
-        ];
+        ;
     }
 
     onKeydown(event: KeyboardEvent) {
