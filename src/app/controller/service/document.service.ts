@@ -29,14 +29,38 @@ export class DocumentService {
     private _ListDocument3:Array<Documents>;
     private _ArrayDocument:Array<Documents>;
     private _Document:Documents;
+    private _Thematique:Thematique;
+    private _Thematique2:Thematique;
     private _DocumentEdite:Documents;
     private _ListThematique:Array<Thematique>;
+    private _ArrayThematique:Array<Thematique>;
     private _selectedFile : File ;
     private _ListUniversite: Array<Universite>;
     private _ListRole: Array<Role>;
     private _addUser:User;
     constructor(private http: HttpClient,private auth:AuthentificationService) { }
 
+
+    get Thematique(): Thematique {
+        if (this._Thematique ==null){
+            this._Thematique = new Thematique();
+        }
+        return this._Thematique;
+    }
+
+    set Thematique(value: Thematique) {
+        this._Thematique = value;
+    }
+    get Thematique2(): Thematique {
+        if (this._Thematique2 ==null){
+            this._Thematique2 = new Thematique();
+        }
+        return this._Thematique2;
+    }
+
+    set Thematique2(value: Thematique) {
+        this._Thematique2 = value;
+    }
 
     get ListUniversite(): Array<Universite> {
         if (this._ListUniversite ==null){
@@ -88,6 +112,16 @@ export class DocumentService {
 
     set ListThematique(value: Array<Thematique>) {
         this._ListThematique = value;
+    }
+    get ArrayThematique(): Array<Thematique> {
+        if (this._ArrayThematique ==null){
+            this._ArrayThematique = new Array<Thematique>();
+        }
+        return this._ArrayThematique;
+    }
+
+    set ArrayThematique(value: Array<Thematique>) {
+        this._ArrayThematique = value;
     }
 
     get ListDocument(): Array<Documents> {
@@ -239,6 +273,13 @@ export class DocumentService {
             headers,
         });
     }
+    getThematique(): Observable<HttpResponse<Array<Thematique>>> {
+        const headers: HttpHeaders = this.initHeaders();
+        return this.http.get<Array<Thematique>>(this.url + 'api/thematique/', {
+            observe: 'response',
+            headers,
+        });
+    }
     getMyDocument(): Observable<HttpResponse<Array<Documents>>> {
         const headers: HttpHeaders = this.initHeaders();
         return this.http.get<Array<Documents>>(this.url + 'api/document/doc/id/'+this.auth.User.id, {
@@ -256,6 +297,21 @@ export class DocumentService {
     createDocument(formData:FormData): Observable<HttpEvent<{}>>{
         const headers: HttpHeaders = this.initHeaders2();
         return this.http.post('http://localhost:8036/api/document/upload',formData, {
+            observe: 'response',
+            headers,
+        });
+    }
+    createThematique(): Observable<HttpEvent<{}>>{
+        const headers: HttpHeaders = this.initHeaders2();
+        return this.http.post('http://localhost:8036/api/thematique/',this.Thematique, {
+            observe: 'response',
+            headers,
+        });
+    }
+    editeThematique(): Observable<HttpEvent<{}>>{
+        const headers: HttpHeaders = this.initHeaders2();
+        console.log(this.Thematique2);
+        return this.http.put('http://localhost:8036/api/thematique/',this.Thematique2, {
             observe: 'response',
             headers,
         });

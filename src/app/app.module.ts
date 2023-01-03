@@ -158,6 +158,9 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { ListAllProjectComponent } from './components/ProjetBasma/list-all-project/list-all-project.component';
 import { MyDocComponent } from './components/ProjetBasma/my-doc/my-doc.component';
+import { ListThematiqueComponent } from './components/ProjetBasma/list-thematique/list-thematique.component';
+import { AddthematiqueComponent } from './components/ProjetBasma/addthematique/addthematique.component';
+import { EditethematiqueComponent } from './components/ProjetBasma/editethematique/editethematique.component';
 @NgModule({
     imports: [
         PdfViewerModule,
@@ -309,7 +312,10 @@ import { MyDocComponent } from './components/ProjetBasma/my-doc/my-doc.component
         EditCritereComponent,
         SafePipe,
         ListAllProjectComponent,
-        MyDocComponent
+        MyDocComponent,
+        ListThematiqueComponent,
+        AddthematiqueComponent,
+        EditethematiqueComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

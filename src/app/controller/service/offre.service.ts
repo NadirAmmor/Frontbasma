@@ -17,9 +17,26 @@ export class OffreService {
     private _editDialogCritere: boolean;
     private _createDialogCritere: boolean;
     private _createDialogNewCritere: boolean;
+    private _createDialogThem: boolean;
+    private _createDialogEditeThem: boolean;
 
     constructor(private http: HttpClient) { }
 
+
+    get createDialogThem(): boolean {
+        return this._createDialogThem;
+    }
+
+    set createDialogThem(value: boolean) {
+        this._createDialogThem = value;
+    }
+   get createDialogEditeThem(): boolean {
+        return this._createDialogEditeThem;
+    }
+
+    set createDialogEditeThem(value: boolean) {
+        this._createDialogEditeThem = value;
+    }
 
     get editDialogCampagne(): boolean {
         return this._editDialogCampagne;

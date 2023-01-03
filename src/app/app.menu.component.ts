@@ -47,6 +47,7 @@ export class AppMenuComponent implements OnInit {
                     label: 'Home',
                     items:[
                         {label: 'Validate document',icon: 'pi pi-fw pi-table', routerLink: ['/ListDoc']},
+                        {label: 'List Thematique',icon: 'pi pi-fw pi-table', routerLink: ['/listAllThematique']},
                         {label: 'All document', icon: 'pi pi-fw pi-list', routerLink: ['/listAll']},
                         {label: 'my document', icon: 'pi pi-fw pi-list', routerLink: ['/myDoc']},
                     ]
