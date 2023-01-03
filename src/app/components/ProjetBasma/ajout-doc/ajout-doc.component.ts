@@ -45,11 +45,11 @@ export class AjoutDocComponent implements OnInit {
 
     get ListDocument(): Array<Documents> {
 
-        return this.service.ListDocument;
+        return this.service.ListDocument2;
     }
 
     set ListDocument(value: Array<Documents>) {
-        this.service.ListDocument = value;
+        this.service.ListDocument2 = value;
     }
     public addOffre() {
         this.submittedCampagne = true;
@@ -71,7 +71,7 @@ export class AjoutDocComponent implements OnInit {
         data.append('type',this.Document.typeDoc);
         data.append('date',new Date(this.Document.dateDoc).toUTCString());
         this.service.createDocument(data).subscribe(data => {
-              this.service.getAllDocument().subscribe(data=>{
+              this.service.getMyDocument().subscribe(data=>{
                     this.ListDocument = data.body;
                 })
             this.messageService.add({

@@ -14,9 +14,9 @@ import {User} from "./controller/model/user";
                         <li app-menuitem *ngFor="let child of item.items" [item]="child" [index]="i" role="none"></li>
                     </ul>
                 </li>
-                <a href="https://www.primefaces.org/primeblocks-ng/#/">
-                    <img src="assets/layout/images/{{appMain.config.dark ? 'banner-primeblocks-dark' : 'banner-primeblocks'}}.png" alt="Prime Blocks" class="w-full mt-3"/>
-                </a>
+<!--                <a href="https://www.primefaces.org/primeblocks-ng/#/">-->
+<!--                    <img src="assets/layout/images/{{appMain.config.dark ? 'banner-primeblocks-dark' : 'banner-primeblocks'}}.png" alt="Prime Blocks" class="w-full mt-3"/>-->
+<!--                </a>-->
             </ul>
         </div>
     `
@@ -36,7 +36,8 @@ export class AppMenuComponent implements OnInit {
                 {
                     label: 'Home',
                     items:[
-                        {label: 'List Document',icon: 'pi pi-fw pi-home', routerLink: ['/ListDoc']},
+                        {label: 'All document', icon: 'pi pi-fw pi-list', routerLink: ['/listAll']},
+                        {label: 'my document', icon: 'pi pi-fw pi-list', routerLink: ['/myDoc']},
                     ]
                 }]
 
@@ -45,7 +46,9 @@ export class AppMenuComponent implements OnInit {
                 {
                     label: 'Home',
                     items:[
-                        {label: 'testAdmin',icon: 'pi pi-fw pi-home', routerLink: ['/uikit/table']},
+                        {label: 'Validate document',icon: 'pi pi-fw pi-table', routerLink: ['/ListDoc']},
+                        {label: 'All document', icon: 'pi pi-fw pi-list', routerLink: ['/listAll']},
+                        {label: 'my document', icon: 'pi pi-fw pi-list', routerLink: ['/myDoc']},
                     ]
                 }]
         }

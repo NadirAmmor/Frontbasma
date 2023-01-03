@@ -32,6 +32,8 @@ import {RegisterComponent} from "./components/ProjetBasma/register/register.comp
 import {ListDocComponent} from "./components/ProjetBasma/list-doc/list-doc.component";
 import {OffrePageComponent} from "./components/offre-page/offre-page.component";
 import {UserComponent} from "./components/user/user.component";
+import {ListAllProjectComponent} from "./components/ProjetBasma/list-all-project/list-all-project.component";
+import {MyDocComponent} from "./components/ProjetBasma/my-doc/my-doc.component";
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -62,7 +64,9 @@ import {UserComponent} from "./components/user/user.component";
                     {path: 'blocks', component: BlocksComponent},
                     {path:'ListDoc', component: ListDocComponent},
                     {path:'users', component: UserComponent},
-                    {path: 'documentation', component: DocumentationComponent}
+                    {path: 'documentation', component: DocumentationComponent},
+                    {path: 'listAll', component: ListAllProjectComponent},
+                    {path: 'myDoc', component: MyDocComponent}
                 ],
             },
             {path:'pages/landing', component: LandingComponent},

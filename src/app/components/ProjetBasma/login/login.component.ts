@@ -87,10 +87,10 @@ export class LoginComponent implements OnInit, OnDestroy {
                 });
                 if(this.User.role.name == 'user') {
 
-                    this.router.navigate(['/ListDoc']);
+                    this.router.navigate(['/listAll']);
 
                 }else if(this.User.role.name == 'admin'){
-                    this.router.navigate(['/uikit/table']);
+                    this.router.navigate(['/ListDoc']);
                 }
             }, (errorResponse: HttpErrorResponse) => {
                 console.log(errorResponse);

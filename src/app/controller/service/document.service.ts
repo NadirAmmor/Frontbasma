@@ -25,6 +25,8 @@ export class DocumentService {
     private _createDialogCandidatResp: boolean;
     private _url = environment.baseUrl
     private _ListDocument:Array<Documents>;
+    private _ListDocument2:Array<Documents>;
+    private _ListDocument3:Array<Documents>;
     private _ArrayDocument:Array<Documents>;
     private _Document:Documents;
     private _DocumentEdite:Documents;
@@ -98,7 +100,27 @@ export class DocumentService {
     set ListDocument(value: Array<Documents>) {
         this._ListDocument = value;
     }
+    get ListDocument2(): Array<Documents> {
+        if (this._ListDocument2 ==null){
+            this._ListDocument2 = new Array<Documents>();
+        }
+        return this._ListDocument2;
+    }
 
+    set ListDocument2(value: Array<Documents>) {
+        this._ListDocument2 = value;
+    }
+
+    get ListDocument3(): Array<Documents> {
+        if (this._ListDocument3 ==null){
+            this._ListDocument3 = new Array<Documents>();
+        }
+        return this._ListDocument3;
+    }
+
+    set ListDocument3(value: Array<Documents>) {
+        this._ListDocument3 = value;
+    }
     get ArrayDocument(): Array<Documents> {
         if (this._ArrayDocument ==null){
             this._ArrayDocument = new Array<Documents>();
@@ -205,7 +227,21 @@ export class DocumentService {
     }
     getAllDocument(): Observable<HttpResponse<Array<Documents>>> {
         const headers: HttpHeaders = this.initHeaders();
+        return this.http.get<Array<Documents>>(this.url + 'api/document/documents/', {
+            observe: 'response',
+            headers,
+        });
+    }
+    getDocument(): Observable<HttpResponse<Array<Documents>>> {
+        const headers: HttpHeaders = this.initHeaders();
         return this.http.get<Array<Documents>>(this.url + 'api/document/', {
+            observe: 'response',
+            headers,
+        });
+    }
+    getMyDocument(): Observable<HttpResponse<Array<Documents>>> {
+        const headers: HttpHeaders = this.initHeaders();
+        return this.http.get<Array<Documents>>(this.url + 'api/document/doc/id/'+this.auth.User.id, {
             observe: 'response',
             headers,
         });
@@ -234,6 +270,15 @@ export class DocumentService {
     deleteDocument(id: string) {
         const headers: HttpHeaders = this.initHeaders();
         return this.http.delete(`http://localhost:8036/api/document/id/${id}/`, {
+            observe: 'response',
+            headers
+        });
+    }
+
+    Validate(id: string) {
+
+        const headers: HttpHeaders = this.initHeaders();
+        return this.http.put('http://localhost:8036/api/document/status/', id,{
             observe: 'response',
             headers
         });

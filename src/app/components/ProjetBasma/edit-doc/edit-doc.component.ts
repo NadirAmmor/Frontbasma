@@ -57,11 +57,11 @@ d= new Date();
 
     get ListDocument(): Array<Documents> {
 
-        return this.service.ListDocument;
+        return this.service.ListDocument2;
     }
 
     set ListDocument(value: Array<Documents>) {
-        this.service.ListDocument = value;
+        this.service.ListDocument2 = value;
     }
 
 
@@ -121,7 +121,7 @@ d= new Date();
         data.append('date',new Date(this.DocumentEdite.dateDoc).toUTCString());
         data.append('id',this.DocumentEdite.id);
         this.service.editeDocument(data).subscribe(data => {
-            this.service.getAllDocument().subscribe(data=>{
+            this.service.getMyDocument().subscribe(data=>{
                 this.ListDocument = data.body;
             })
             this.messageService.add({

@@ -156,6 +156,8 @@ import { EditDocComponent } from './components/ProjetBasma/edit-doc/edit-doc.com
 import { EditCritereComponent } from './components/edit-critere/edit-critere.component';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { ListAllProjectComponent } from './components/ProjetBasma/list-all-project/list-all-project.component';
+import { MyDocComponent } from './components/ProjetBasma/my-doc/my-doc.component';
 @NgModule({
     imports: [
         PdfViewerModule,
@@ -305,7 +307,9 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
         NewCandidatComponent,
         EditDocComponent,
         EditCritereComponent,
-        SafePipe
+        SafePipe,
+        ListAllProjectComponent,
+        MyDocComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

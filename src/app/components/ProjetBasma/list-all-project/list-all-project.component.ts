@@ -14,13 +14,15 @@ import {Documents} from "../../../controller/model/documents";
 import { saveAs } from "file-saver";
 import {HttpErrorResponse} from "@angular/common/http";
 import {DatePipe} from "@angular/common";
+import {PDFDocumentProxy, PdfViewerComponent} from "ng2-pdf-viewer";
 
 @Component({
-  selector: 'app-list-doc',
-  templateUrl: './list-doc.component.html',
-  styleUrls: ['./list-doc.component.scss']
+  selector: 'app-list-all-project',
+  templateUrl: './list-all-project.component.html',
+  styleUrls: ['../../../../assets/demo/badges.scss']
 })
-export class ListDocComponent implements OnInit {
+export class ListAllProjectComponent implements OnInit {
+
     sortOrder: number;
     sortField: string;
     file: File;
@@ -30,8 +32,7 @@ export class ListDocComponent implements OnInit {
     @ViewChild('dt') table: Table;
     loading:boolean = true;
     @ViewChild('filter') filter: ElementRef;
-    data: FormData;
-  constructor(private  messageService: MessageService, private confirmationService: ConfirmationService, public cand:DocumentService, public app: AppComponent, public auth: AuthentificationService, public configService: ConfigService, private router: Router, private offre: OffreService, private  service: DocumentService) { }
+    constructor(private  messageService: MessageService, private confirmationService: ConfirmationService, public cand:DocumentService, public app: AppComponent, public auth: AuthentificationService, public configService: ConfigService, private router: Router, private offre: OffreService, private  service: DocumentService) { }
 
     get selectedFile(): File {
         return this.service.selectedFile;
@@ -42,11 +43,11 @@ export class ListDocComponent implements OnInit {
     }
     get ListDocument(): Array<Documents> {
 
-        return this.service.ListDocument3;
+        return this.service.ListDocument2;
     }
 
     set ListDocument(value: Array<Documents>) {
-        this.service.ListDocument3 = value;
+        this.service.ListDocument2 = value;
     }
 
     get ArrayDocument(): Array<Documents> {
@@ -75,23 +76,28 @@ export class ListDocComponent implements OnInit {
     set DocumentEdite(value: Documents) {
         this.service.DocumentEdite = value;
     }
-  ngOnInit(): void {
-      if(this.User.username== null){
-          this.router.navigate(['/pages/error']);
-      }
-      this.service.getDocument().subscribe(
-      data => {
-          this.ListDocument = data.body;
-      }
-  );
-      this.app.menuMode = 'static';
-      this.config = this.configService.config;
-      this.subscription = this.configService.configUpdate$.subscribe(config => {
-          this.config = config;
-      });
+    ngOnInit(): void {
+        if(this.User.username== null){
+            this.router.navigate(['/pages/error']);
+        }
+        this.service.getAllDocument().subscribe(
+            data => {
+                this.ListDocument = data.body;
+            }
+        );
+        console.log( this.ListDocument.length)
+        this.app.menuMode = 'static';
+        this.config = this.configService.config;
+        this.subscription = this.configService.configUpdate$.subscribe(config => {
+            this.config = config;
+        });
 
-  }
-
+    }
+    @ViewChild(PdfViewerComponent, { static: false })
+    private pdfComponent: PdfViewerComponent;
+    initLoadCompleted(pdf: PDFDocumentProxy): void {
+        this.pdfComponent.pdfViewer.scroll.down = false;
+    }
 
     downloadFile(file: any) {
         const byteCharacters = atob(file.file);
@@ -122,7 +128,7 @@ export class ListDocComponent implements OnInit {
         this.createDialogCampagne = true;
     }
     public FindCriter(doc: Documents) {
-      this.DocumentEdite = doc;
+        this.DocumentEdite = doc;
         console.log(this.DocumentEdite);
         this.submittedCritere = false;
         this.createDialogCritere = true;
@@ -206,7 +212,7 @@ export class ListDocComponent implements OnInit {
                     });
 
 
-                    this.service.getAllDocument().subscribe(data=>{
+                    this.service.getDocument().subscribe(data=>{
                         this.ListDocument = data.body;
                     })
                 }, (errorResponse: HttpErrorResponse) => {
@@ -222,7 +228,7 @@ export class ListDocComponent implements OnInit {
             }
         });
 
-        this.service.getAllDocument().subscribe(data=>{
+        this.service.getDocument().subscribe(data=>{
             this.ListDocument = data.body;
         });
     }
@@ -234,49 +240,12 @@ export class ListDocComponent implements OnInit {
         this.offre.submittedEditCampagne = value;
     }
     public editCampagne(doc:Documents){
-      this.DocumentEdite = doc;
+        this.DocumentEdite = doc;
         this.DocumentEdite.dateDoc = this.pipe.transform( this.DocumentEdite.dateDoc, 'yyyy-MM-dd');
         this.selectedFile = this.file;
-      this.editDialogCampagne =true;
+        this.editDialogCampagne =true;
     }
 
 
-    Validate(doc: Documents) {
-        this.confirmationService.confirm({
-            message: 'Are you sure you want to validate ' + doc.titre + '?',
-            header: 'Confirm',
-            icon: 'pi pi-exclamation-triangle',
-            accept: () => {
-                this.data = new FormData();
-                this.data.append('id',doc.id);
-                console.log(this.data);
-                this.service.Validate(doc.id).subscribe(data => {
-                    this.messageService.add({
-                        severity: 'success',
-                        summary: 'Successful',
-                        detail: 'Document Validated',
-                        life: 3000
-                    });
 
-
-                    this.service.getDocument().subscribe(data=>{
-                        this.ListDocument = data.body;
-                    })
-                }, (errorResponse: HttpErrorResponse) => {
-                    console.log(errorResponse);
-                    alert('errorResponse');
-                    this.messageService.add({
-                        severity: 'error',
-                        summary: 'Error Message',
-                        detail: ' Failed to validate document',
-                        life: 3000
-                    });
-                });
-            }
-        });
-
-        this.service.getDocument().subscribe(data=>{
-            this.ListDocument = data.body;
-        });
-    }
 }
